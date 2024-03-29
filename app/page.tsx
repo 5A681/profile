@@ -4,11 +4,8 @@ import Content from "./components/Content";
 
 export default function Home() {
   return (
-    <>
-      <section>
-        <Nav></Nav>
-        <Content></Content>
-      </section>
-    </>
+    <section className="h-[100%]">
+      <Content></Content>
+    </section>
   );
 }

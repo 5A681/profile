@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Nav from "./components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="w-full flex-col h-screen  flex items-center justify-center  ">
+          <div className="w-[1024px] h-[1024px] relative flex">
+            <div className="w-[100%] h-[100%] z-50">
+              <Nav></Nav>
+              <div className="w-[1024px]  h-[calc(100%-56px)]">{children}</div>
+            </div>
+            <div className="absolute bg-green-400  inset-0 blur-sm z-10"></div>
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
