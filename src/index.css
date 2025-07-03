@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #50e3c2;
+  --background-color: #f5faf6;
+  --text-color: #333333;
+  --border-color: #e0e0e0;
+  --font-family: "Arial", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

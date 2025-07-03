@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  profile-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    container_name: profile-react-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
+  # Optional: Development service
+  profile-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    container_name: profile-react-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    profiles:
+      - dev

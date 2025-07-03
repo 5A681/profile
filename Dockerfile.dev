@@ -1,0 +1,23 @@
+# Development Dockerfile
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install bun globally
+RUN npm install -g bun
+
+# Copy package files
+COPY package.json bun.lock* ./
+
+# Install dependencies
+RUN bun install
+
+# Copy source code
+COPY . .
+
+# Expose port for Vite dev server
+EXPOSE 5173
+
+# Start development server
+CMD ["bun", "run", "dev", "--host", "0.0.0.0"]
