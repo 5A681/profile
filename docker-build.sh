@@ -5,7 +5,7 @@
 echo "🚀 Building React Profile App Docker Image..."
 
 # Build the production image
-docker build -t profile-react-app:latest .
+docker build -f Dockerfile.simple -t profile-react-app:latest .
 
 if [ $? -eq 0 ]; then
     echo "✅ Docker image built successfully!"
