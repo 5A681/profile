@@ -13,14 +13,38 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to DigitalOcean Droplet
+      - name: Deploy application to DigitalOcean Droplet
         uses: appleboy/ssh-action@v1.0.0 # Use the latest stable version
         with:
-          ssh-private-key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          host: ${{ secrets.DO_DROPLET_HOST }}
+          username: ${{ secrets.DO_DROPLET_USERNAME }}
+          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          script: |
+            # Ensure the directory exists on the Droplet
+            # If 'profile' directory might exist from previous runs, handle it.
+            # For a fresh clone, you might want to remove it first, or handle updates.
+            # Example: if you want to always start fresh (be careful with data!)
+            # if [ -d "profile" ]; then
+            #   rm -rf profile
+            # fi
 
-      - name: Deploy to Droplet
-        run: ssh root@188.166.191.199
-          git clone git@github.com:5A681/profile.git
-          cd profile
-          docker compose  up -d --build
-          exit
+            # Navigate to the parent directory where you want to clone the repo
+            # For example, if you want 'profile' to be directly under root's home:
+            cd /root/ # Or /var/www/ if that's where you manage your web apps
+
+            # Clone the repository if it doesn't exist, otherwise pull updates
+            if [ ! -d "profile" ]; then
+              echo "Cloning repository..."
+              git clone git@github.com:5A681/profile.git
+              cd profile
+            else
+              echo "Repository already exists, pulling latest changes..."
+              cd profile
+              git pull origin main
+            fi
+
+            # Build and run Docker Compose services
+            echo "Building and starting Docker Compose services..."
+            docker compose up -d --build --force-recreate
+
+            echo "Deployment to Droplet complete!"
