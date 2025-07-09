@@ -20,9 +20,10 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
+            echo ${{ secrets.DEPLOY_KEY }}
             # --- Your Deployment Script Here ---
             # Navigate to your application's directory on the Droplet
-            cd /var/www/your-app-directory
+
 
             # Pull the latest code from your repository
             # git pull origin main
