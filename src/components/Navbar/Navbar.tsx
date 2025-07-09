@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className={styles.container}>
         <div className={styles.brand}>
           <img src={brandLogo} alt="HEARTBOX Logo" className={styles.logo} />
-          <div className={styles.brandText}>HEARTBOX</div>
+          <div className={styles.brandText}>HEARTBOXX</div>
         </div>
         <div>
           <ul>
