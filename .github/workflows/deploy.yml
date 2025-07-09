@@ -20,28 +20,9 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           script: |
-            # Ensure the directory exists on the Droplet
-            # If 'profile' directory might exist from previous runs, handle it.
-            # For a fresh clone, you might want to remove it first, or handle updates.
-            # Example: if you want to always start fresh (be careful with data!)
-            # if [ -d "profile" ]; then
-            #   rm -rf profile
-            # fi
-
-            # Navigate to the parent directory where you want to clone the repo
-            # For example, if you want 'profile' to be directly under root's home:
             cd /root/ # Or /var/www/ if that's where you manage your web apps
-
-            # Clone the repository if it doesn't exist, otherwise pull updates
-            if [ ! -d "profile" ]; then
-              echo "Cloning repository..."
-              git clone git@github.com:5A681/profile.git
-              cd profile
-            else
-              echo "Repository already exists, pulling latest changes..."
-              cd profile
-              git pull origin main
-            fi
+            git clone git@github.com:5A681/profile.git
+            cd profile
 
             # Build and run Docker Compose services
             echo "Building and starting Docker Compose services..."
