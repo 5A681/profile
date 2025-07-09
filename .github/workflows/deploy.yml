@@ -21,8 +21,8 @@ jobs:
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           script: |
             cd /root/ # Or /var/www/ if that's where you manage your web apps
-            git pull origin main
             cd profile
+            git pull origin main
 
             # Build and run Docker Compose services
             echo "Building and starting Docker Compose services..."
