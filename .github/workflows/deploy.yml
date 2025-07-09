@@ -16,8 +16,8 @@ jobs:
       - name: Deploy application to DigitalOcean Droplet
         uses: appleboy/ssh-action@v1.0.0 # Use the latest stable version
         with:
-          host: ${{ secrets.DO_DROPLET_HOST }}
-          username: ${{ secrets.DO_DROPLET_USERNAME }}
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           script: |
             # Ensure the directory exists on the Droplet
