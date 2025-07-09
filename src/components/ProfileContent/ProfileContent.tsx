@@ -1,36 +1,36 @@
 import styles from "./ProfileContent.module.css";
+import linkedinIcon from "../../assets/linkedin.png";
+import githubIcon from "../../assets/github.png";
+import youtubeIcon from "../../assets/youtube.png";
+import phoneIcon from "../../assets/phone.png";
+import emailIcon from "../../assets/mail.png";
 
 export default function ProfileContent() {
-  const skills = [
+  const contacts = [
     {
-      name: "Golang",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+      name: "LINKEDIN",
+      image: linkedinIcon,
+      url: "https://www.linkedin.com/in/phongphat-srithong-33aa9a1ba/",
     },
     {
-      name: "Java",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      name: "GITHUB",
+      image: githubIcon,
+      url: "https://github.com/5A681",
     },
     {
-      name: "C#",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+      name: "YOUTUBE",
+      image: youtubeIcon,
+      url: "",
     },
     {
-      name: "TypeScript",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      name: "085-870-3952",
+      image: phoneIcon,
+      url: "",
     },
     {
-      name: "Python",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    },
-    {
-      name: "C",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+      name: "heartboxengineer@gmail.com",
+      image: emailIcon,
+      url: "",
     },
   ];
 
@@ -40,17 +40,23 @@ export default function ProfileContent() {
         <p className={styles.greeting}>Hello My Name Phongphat Srithong</p>
 
         <div className={styles.skillsGrid}>
-          {skills.map((skill, index) => (
-            <div key={index} className={styles.skillCard}>
+          {contacts.map((contact, index) => (
+            <a
+              key={index}
+              href={contact.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.skillCard}
+            >
               <div className={styles.skillImageContainer}>
                 <img
-                  src={skill.image}
-                  alt={skill.name}
+                  src={contact.image}
+                  alt={contact.name}
                   className={styles.skillImage}
                 />
               </div>
-              <span className={styles.skillName}>{skill.name}</span>
-            </div>
+              <span className={styles.skillName}>{contact.name}</span>
+            </a>
           ))}
         </div>
       </div>

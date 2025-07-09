@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double&display=swap");
+
 .container {
   width: 100%;
   max-width: 100vw;
@@ -15,7 +17,19 @@
   overflow: hidden;
 }
 
-.container > div:first-child {
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brandText {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
@@ -47,9 +61,21 @@ li {
   position: relative;
 }
 
+li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 li:hover {
   color: #007bff;
   background-color: #f8f9fa;
+}
+
+li:hover a {
+  color: #007bff;
 }
 
 li::after {
@@ -68,6 +94,19 @@ li:hover::after {
   width: 80%;
 }
 
+li.active {
+  color: #007bff;
+  background-color: #f8f9fa;
+}
+
+li.active a {
+  color: #007bff;
+}
+
+li.active::after {
+  width: 80%;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .container {
@@ -75,6 +114,15 @@ li:hover::after {
     flex-wrap: wrap;
     min-height: 60px;
     height: auto;
+  }
+
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brandText {
+    font-size: 1.2rem;
   }
 
   ul {
@@ -85,9 +133,5 @@ li:hover::after {
   li {
     padding: 0.5rem;
     font-size: 0.9rem;
-  }
-
-  .container > div:first-child {
-    font-size: 1.2rem;
   }
 }
