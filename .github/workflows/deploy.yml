@@ -16,35 +16,11 @@ jobs:
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@v1.0.0 # Use the latest stable version
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USERNAME }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            echo ${{ secrets.DEPLOY_KEY }}
-            # --- Your Deployment Script Here ---
-            # Navigate to your application's directory on the Droplet
+          ssh-private-key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
 
-
-            # Pull the latest code from your repository
-            # git pull origin main
-
-            # (Optional) Install dependencies if your project requires it
-            # For Node.js:
-            # npm install
-
-            # (Optional) Build your application if it's a front-end or compiled language
-            # For Node.js:
-            # npm run build
-
-            # Restart your application (e.g., using PM2, systemd, or a simple restart command)
-            # Example for a Node.js app managed by PM2:
-            # pm2 restart your-app-name || pm2 start app.js --name your-app-name
-
-            # Example for a simple service restart (if your app is managed by systemd)
-            # sudo systemctl restart your-service-name.service
-
-            # Example for a Docker container deployment
-            # docker compose pull
-            docker compose up -d --build
-
-            echo "Deployment complete!"
+      - name: Deploy to Droplet
+        run: ssh root@188.166.191.199
+          git clone git@github.com:5A681/profile.git
+          cd profile
+          docker compose  up -d --build
+          exit
