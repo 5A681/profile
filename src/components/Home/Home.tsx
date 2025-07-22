@@ -1,11 +1,12 @@
-import styles from "./ProfileContent.module.css";
+import styles from "./Home.module.css";
 import linkedinIcon from "../../assets/linkedin.png";
 import githubIcon from "../../assets/github.png";
 import youtubeIcon from "../../assets/youtube.png";
 import phoneIcon from "../../assets/phone.png";
 import emailIcon from "../../assets/mail.png";
+import ProfileImage from "../ProfileImage/ProfileImage";
 
-export default function ProfileContent() {
+export default function Home() {
   const contacts = [
     {
       name: "LINKEDIN",
@@ -38,7 +39,7 @@ export default function ProfileContent() {
     <>
       <div className={styles.content}>
         <p className={styles.greeting}>Hello My Name Phongphat Srithong</p>
-
+        <ProfileImage/>
         <div className={styles.skillsGrid}>
           {contacts.map((contact, index) => (
             <a
